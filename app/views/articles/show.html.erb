@@ -1,0 +1,35 @@
+<div class="alert alert-info">
+  <span class="label">Title:</span>
+  <%= @article.title %>
+</div>
+ 
+<p class="lead">
+  <strong>Text:</strong>
+  <%= @article.content %>
+</p>
+ 
+<%= form_for @comment, url: comments_path, remote: true do |f| %>
+
+        <%= f.hidden_field :article_id, value: @article.id %>
+
+        <% if current_user %>
+
+            <%= f.hidden_field :user_id, value: current_user.id %>
+
+        <% end %>
+
+        <br/>
+
+        <%= f.label :content %>
+
+        <%= f.text_area :content, cols: 20, rows: 10 %>
+
+        <br/>
+
+        <%= f.submit :submit %>
+
+    <% end %>
+
+<%= link_to 'Back', articles_path,class: 'btn btn-danger' %>
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

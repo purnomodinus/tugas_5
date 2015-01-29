@@ -1,0 +1,19 @@
+<%= form_for :article, url: articles_path do |f| %>
+  <p>
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    <%= @article.errors[:title].first unless @article.errors[:title].blank? %>
+  </p>
+ 
+  <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content,cols: 20, rows: 10 %>
+    <%= @article.errors[:content].first unless @article.errors[:content].blank? %>
+  </p>
+ 
+  <p>
+    <%= f.submit 'Save',:class => 'btn btn-primary' %>
+  </p>
+<% end %>
+
